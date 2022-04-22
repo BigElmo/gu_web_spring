@@ -35,7 +35,7 @@ public class UserController {
 
     @GetMapping("/new")
     public String form(Model model) {
-        // TODO model.addAttribute("user", .........);
+        model.addAttribute("user", userRepository.save(new User("")));
         return "user_form";
     }
 
