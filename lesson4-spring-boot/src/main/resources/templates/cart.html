@@ -36,12 +36,8 @@
 </nav>
 
 <div class="container">
-    <h1 th:align="center">Список товаров</h1>
+    <h1 th:align="center">Корзина</h1>
     <div class="row py-2">
-        <div class="col-12">
-            <a class="btn btn-primary" th:href="@{/product/new}">Создать новый товар</a>
-        </div>
-
         <div class="col-12">
             <table class="table table-bordered my-2">
                 <thead>
@@ -49,7 +45,6 @@
                     <th scope="col">Наименование</th>
                     <th scope="col">Цена</th>
                     <th scope="col">Действия</th>
-                    <th scope="col">Опции админа</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,11 +52,7 @@
                     <td th:text="${product.name}">Товар</td>
                     <td th:text="${product.cost}">Цена</td>
                     <td>
-                        <a class="btn btn-success" th:href="@{/cart/add/{id}(id = ${product.id})}"><i class="fas fa-cart-arrow-down"></i></a>
-                    </td>
-                    <td>
-                        <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i class="fas fa-edit"></i></a>
-                        <a class="btn btn-danger" th:href="@{/product/delete/{id}(id = ${product.id})}"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn btn-danger" th:href="@{/cart/remove/{id}(id = ${product.id})}"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 </tbody>
