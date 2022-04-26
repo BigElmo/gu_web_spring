@@ -12,6 +12,7 @@
         <module>lesson2-beans</module>
         <module>lesson-03-spring-mvc</module>
         <module>lesson4-spring-boot</module>
+        <module>lesson5-hibernate</module>
     </modules>
     <packaging>pom</packaging>
 
