@@ -1,26 +1,26 @@
-package com.bigelmo.spring;
+package com.bigelmo.spring.dao;
 
-import com.bigelmo.spring.model.Product;
+import com.bigelmo.spring.model.Order;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class ProductDao implements Dao<Product> {
+public class OrderDao implements Dao<Order> {
 
-    private EntityManager em;
+    private final EntityManager em;
 
-    public ProductDao(EntityManager em) {
+    public OrderDao(EntityManager em) {
         this.em = em;
     }
 
     @Override
-    public Product findById(Long id) {
-        return em.find(Product.class, id);
+    public Order findById(Long id) {
+        return em.find(Order.class, id);
     }
 
     @Override
-    public List<Product> findAll() {
-        return em.createQuery("from Product p", Product.class)
+    public List<Order> findAll() {
+        return em.createQuery("select o from Order o", Order.class)
                 .getResultList();
     }
 
@@ -37,15 +37,15 @@ public class ProductDao implements Dao<Product> {
     }
 
     @Override
-    public Product saveOrUpdate(Product product) {
+    public Order saveOrUpdate(Order order) {
         em.getTransaction().begin();
         try {
-            em.merge(product);
+            em.merge(order);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             System.out.println("Ошибка при сохранении: " + e.getMessage());
         }
-        return product;
+        return order;
     }
 }
