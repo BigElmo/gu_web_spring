@@ -1,7 +1,7 @@
 package com.bigelmo.spring.lesson4springboot.controller;
 
 import com.bigelmo.spring.lesson4springboot.market.Product;
-import com.bigelmo.spring.lesson4springboot.market.ProductRepository;
+import com.bigelmo.spring.lesson4springboot.market.ProductJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +17,10 @@ import javax.validation.Valid;
 @Controller
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private final ProductJpaRepository productRepository;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
+    public ProductController(ProductJpaRepository productRepository) {
         this.productRepository = productRepository;
     }
 
@@ -31,13 +31,13 @@ public class ProductController {
 
     @GetMapping("/list")
     public String list(Model model) {
-        model.addAttribute("products", productRepository.getAllProducts());
+        model.addAttribute("products", productRepository.findAll());
         return "product_list";
     }
 
     @GetMapping("/{id}")
     public String card(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("product", productRepository.getProductById(id));
+        model.addAttribute("product", productRepository.findById(id));
         return "product_card";
     }
 
@@ -58,7 +58,7 @@ public class ProductController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
-        productRepository.deleteProduct(id);
+        productRepository.deleteById(id);
         return "redirect:/product/list";
     }
 }

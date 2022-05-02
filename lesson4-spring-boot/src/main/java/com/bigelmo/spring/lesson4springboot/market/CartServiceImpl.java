@@ -6,16 +6,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Scope("prototype")
 public class CartServiceImpl implements CartService {
 
     private final List<Long> cart = new ArrayList<>();
-    private final ProductRepository repository;
+    private final ProductJpaRepository repository;
 
     @Autowired
-    public CartServiceImpl(ProductRepository repository) {
+    public CartServiceImpl(ProductJpaRepository repository) {
         this.repository = repository;
     }
 
@@ -34,9 +35,8 @@ public class CartServiceImpl implements CartService {
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
         for (Long id : cart) {
-            if (repository.getProductById(id) != null) {
-                products.add(repository.getProductById(id));
-            }
+            Optional<Product> product = repository.findById(id);
+            product.ifPresent(products::add);
         }
         return products;
     }
