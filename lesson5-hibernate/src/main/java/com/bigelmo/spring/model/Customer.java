@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "customers")
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,18 +14,14 @@ public class Product {
     @Column
     private String name;
 
-    @Column
-    private int price;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
     private List<Order> orders;
 
-    public Product(String name, int price) {
+    public Customer(String name) {
         this.name = name;
-        this.price = price;
     }
 
-    public Product() {
+    public Customer() {
     }
 
     public Long getId() {
@@ -44,14 +40,6 @@ public class Product {
         this.name = name;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public List<Order> getOrders() {
         return orders;
     }
@@ -62,10 +50,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price=" + price +
                 '}';
     }
 }

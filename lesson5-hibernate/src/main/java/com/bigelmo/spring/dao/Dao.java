@@ -1,4 +1,4 @@
-package com.bigelmo.spring;
+package com.bigelmo.spring.dao;
 
 import java.util.List;
 

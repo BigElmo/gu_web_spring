@@ -17,5 +17,7 @@
         <property name="hibernate.format_sql">true</property>
 
         <mapping class="com.bigelmo.spring.model.Product"/>
+        <mapping class="com.bigelmo.spring.model.Customer"/>
+        <mapping class="com.bigelmo.spring.model.Order"/>
     </session-factory>
 </hibernate-configuration>
