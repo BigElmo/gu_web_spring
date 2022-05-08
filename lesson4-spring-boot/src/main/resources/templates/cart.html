@@ -48,6 +48,9 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:unless="${!products.isEmpty()}">
+                    <td colspan="3" th:align="center">Нету совсем ничего в корзине!</td>
+                </tr>
                 <tr th:each="product : ${products}">
                     <td th:text="${product.name}">Товар</td>
                     <td th:text="${product.cost}">Цена</td>
