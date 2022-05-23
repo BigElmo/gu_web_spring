@@ -17,16 +17,16 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @PostConstruct
     public void init() {
-        this.save(new Product("Пылесос1", 20000));
-        this.save(new Product("Телевизор1", 50000));
-        this.save(new Product("Микроволновая печь1", 15000));
-        this.save(new Product("Утюг1", 5000));
-        this.save(new Product("Чайник1", 2000));
-        this.save(new Product("Пылесос2", 21000));
-        this.save(new Product("Телевизор2", 51000));
-        this.save(new Product("Микроволновая печь2", 16000));
-        this.save(new Product("Утюг2", 6000));
-        this.save(new Product("Чайник2", 3000));
+//        this.save(new Product("Пылесос1", 20000));
+//        this.save(new Product("Телевизор1", 50000));
+//        this.save(new Product("Микроволновая печь1", 15000));
+//        this.save(new Product("Утюг1", 5000));
+//        this.save(new Product("Чайник1", 2000));
+//        this.save(new Product("Пылесос2", 21000));
+//        this.save(new Product("Телевизор2", 51000));
+//        this.save(new Product("Микроволновая печь2", 16000));
+//        this.save(new Product("Утюг2", 6000));
+//        this.save(new Product("Чайник2", 3000));
     }
 
     @Override
